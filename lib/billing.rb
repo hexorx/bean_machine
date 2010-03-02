@@ -1,5 +1,8 @@
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__))
 
-require 'billing/account'
+require 'active_merchant'
+require 'money'
+require 'currencies'
+require 'billing/user'
 require 'billing/transaction'
-require 'billing/post'
+require 'billing/payment'
