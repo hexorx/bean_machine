@@ -1,0 +1,9 @@
+digraph CreditCard {  
+  init [shape = square];
+  init -> {authorized declined};
+
+  authorized -> {captured declined};
+  captured -> {refunded};
+
+  {rank=same; authorized declined }
+}

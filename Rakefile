@@ -4,15 +4,18 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "billing"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.name = "bean_machine"
+    gem.summary = %Q{Kick accounting in the mean bean machine!}
+    gem.description = %Q{Accounting sucks. Well if you are trying to do it right it does. Bean machine gives you the power of an immutable double entry accounting system through the use of a simple transfer method. The idea is to make accounting easy by breaking it into easy to follow steps. Transfer this much from this account to that account.}
     gem.email = "hexorx@gmail.com"
-    gem.homepage = "http://github.com/hexorx/billing"
+    gem.homepage = "http://crackersnack.com/bean_machine"
     gem.authors = ["hexorx"]
+    gem.add_development_dependency "sqlite3"
     gem.add_development_dependency "rspec"
     gem.add_development_dependency "yard"
     gem.add_development_dependency "cucumber"
+    gem.add_development_dependency "machinist"
+    gem.add_development_dependency "faker"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

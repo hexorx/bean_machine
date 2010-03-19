@@ -1,8 +1,9 @@
-module Billing
+module Bean
   Accounts = [:asset, :liability, :expense, :income, :payment, :currency]
   
-  class Transaction < ActiveRecord::Base
-    set_table_name :billing_transactions
+  class Transfer < ActiveRecord::Base
+    set_table_name :bean_transfers
+    belongs_to :accountable, :polymorphic => true
     
     # before_validation :normalize_accounts
     
@@ -20,6 +21,8 @@ module Billing
       {:conditions => {:currency => currency.to_s.upcase}}
     }
     
+    named_scope :stateful, :conditions => 'state is not NULL'
+    
     def before_validation_with_normalizing
       self[:debit].downcase!
       self[:credit].downcase!
@@ -27,13 +30,11 @@ module Billing
       before_validation_without_normalizing
     end
     alias_method_chain :before_validation, :normalizing
-    
+              
   protected
   
     def validate
       errors.add(:amount, 'must be positive') unless self.amount > Money.new(0,self.currency)
-      errors.add(:debit, 'must be a valid account') unless Billing::Accounts.include?(self.debit.to_sym)
-      errors.add(:credit, 'must be a valid account') unless Billing::Accounts.include?(self.credit.to_sym)
     end
     
   end

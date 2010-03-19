@@ -1,16 +1,16 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe Billing::User do
+describe Bean::User do
   describe 'balance' do
     before(:all) do
       @user = User.make
-      Billing::Transaction.destroy_all
-      @user.transactions.make(:credit => 'asset', :debit => 'liability', :amount => Money.new(100, 'MONKEY'))
-      @user.transactions.make(:credit => 'asset', :debit => 'expense', :amount => Money.new(200, 'USD'))
-      @user.transactions.make(:credit => 'payment', :debit => 'asset', :amount => Money.new(300, 'USD'))
-      @user.transactions.make(:credit => 'payment', :debit => 'expense', :amount => Money.new(400, 'USD'))
-      @user.transactions.make(:credit => 'payment', :debit => 'currency', :amount => Money.new(500, 'USd'))
-      @user.transactions.make(:credit => 'currency', :debit => 'income', :amount => Money.new(600, 'MONKEY'))
+      Bean::Transfer.destroy_all
+      @user.transfers.make(:credit => 'asset', :debit => 'liability', :amount => Money.new(100, 'MONKEY'))
+      @user.transfers.make(:credit => 'asset', :debit => 'expense', :amount => Money.new(200, 'USD'))
+      @user.transfers.make(:credit => 'payment', :debit => 'asset', :amount => Money.new(300, 'USD'))
+      @user.transfers.make(:credit => 'payment', :debit => 'expense', :amount => Money.new(400, 'USD'))
+      @user.transfers.make(:credit => 'payment', :debit => 'currency', :amount => Money.new(500, 'USd'))
+      @user.transfers.make(:credit => 'currency', :debit => 'income', :amount => Money.new(600, 'MONKEY'))
     end
 
     it 'should return a money object' do
