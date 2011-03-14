@@ -106,10 +106,6 @@ This example has not been tested yet but is here to give you a basic idea of how
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-## Sponsored By
-
-This gem is sponsored by [Teliax][]. [Teliax][] makes business class Voice, [Centrex][](Including Hosted: IVRs, Ring Groups, Extensions and Day Night Mode) and Data services accessible to anyone. You don't have to be a fortune 500 to sound big!
-
 ## Copyright
 
 Copyright (c) 2010 Josh Robinson . See LICENSE for details.
